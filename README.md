@@ -1,5 +1,6 @@
 # IMod
 ![Github Stars](https://img.shields.io/badge/build-1.0.0-blue)
+![GitHub Repo stars](https://img.shields.io/github/stars/Moomerator46/IMod?style=flat&color=yellow)
 
 IMod is a tool that is planned to have an ability that you can make mods for [my games](https://moomerator.itch.io/).
 
