@@ -54,6 +54,7 @@ Click OK.
 Head back into your code, and start it with this:
 
 ```cs
+// This code is specifically used for v1.0.0.
 using System
 
 public class YourModName : IModPlugin
