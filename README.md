@@ -90,3 +90,9 @@ Then you can run IMod.exe.
 It should say it scanned a mod and it will give you a code. Enter the code, and then it will run!
 
 <img width="979" height="477" alt="image" src="https://github.com/user-attachments/assets/58fc9974-9c36-4354-b1aa-5f6ed92dc0ba" />
+
+# How do I run a downloaded mod?
+
+Since when you download mods online, your computer doesn't fully see it as safe yet. So if you try using it, it won't work.
+There is a way to counter this though. Only do this if you trust the developer of the mod you are going to try.
+Right click on the dll, click properties, click unblock near the bottom, and click apply. This will make the dll work.
