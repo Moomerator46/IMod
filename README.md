@@ -55,13 +55,50 @@ Head back into your code, and start it with this:
 
 ```cs
 // This code is specifically used for v1.0.0.
-using System
+using System;
 
 public class YourModName : IModPlugin
 {
   public void Run()
   {
     // Your code here
+  }
+}
+```
+
+v1.1.0:
+
+```cs
+using System;
+
+public class YourModName : IModPlugin
+{
+  public string Name => "Mod Name";
+  public string Author => "Modder";
+  public string Description => "Mod Description";
+  public void Run()
+  {
+    // Your code here
+  }
+}
+```
+
+v1.2.0:
+
+```cs
+using System;
+
+public class YourModName : IModPlugin
+{
+  public string Name => "Mod Name";
+  public string Author => "Modder";
+  public string Description => "Mod Description";
+  public void Run(IModLogger logger)
+  {
+    logger.Log("Log"); //Adds a log to untitled_log.txt
+    logger.Warn("Warning"); //Adds a warning to untitled_log.txt
+    logger.Error("Error"); //Adds an error to untitled_log.txt
+    // Just add your code without this if you don't want to use logger, just keep it in the Run parameter or else it will cause errors.
   }
 }
 ```
