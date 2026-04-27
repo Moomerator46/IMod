@@ -1,5 +1,5 @@
 # IMod
-![Github Stars](https://img.shields.io/badge/build-1.3.1-blue)
+![Github Stars](https://img.shields.io/badge/build-1.4.0-blue)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Moomerator46/IMod?style=flat&color=yellow)
 
 IMod is a tool that is planned to have an ability that you can make mods for [my games](https://moomerator.itch.io/).
@@ -103,6 +103,27 @@ public class YourModName : IModPlugin
 }
 ```
 
+v1.4.0:
+```cs
+using System;
+
+public class YourModName : IModPlugin
+{
+  public string Name => "Mod Name";
+  public string Author => "Modder";
+  public string Description => "Mod Description";
+  public string Version => "v(Version Number)";
+  public string RequiredIModVersion => "v1.4.0";
+  public void Run(IModLogger logger)
+  {
+    logger.Log("Log"); //Adds a log to untitled_log.txt
+    logger.Warn("Warning"); //Adds a warning to untitled_log.txt
+    logger.Error("Error"); //Adds an error to untitled_log.txt
+    // Just add your code without this if you don't want to use logger, just keep it in the Run parameter or else it will cause errors.
+  }
+}
+```
+
 ## Step 3: Compiling your mod.
 Be sure to go into both tabs, and to Ctrl+S to save them.
 
@@ -121,6 +142,34 @@ Click Build Solution.
 Now if you have any errors, the build will fail until you fix them.
 
 If it was succesful, open File Explorer, and go to the path `C:/Users/your username/source/repos/your project name/your project name/bin/Debug`. You will find a file called `yourfilename.dll`.
+
+# IModLogger
+IModLogger is a part of the InfoPlay IMod API, that lets you create logs into a file. This can be useful when you need to find logs, warnings, and errors in your mod. You can code them in to your mod by using:
+```cs
+// previous code required
+public void Run(IModLogger logger)
+{
+  logger.Log("Log");
+  logger.Warn("Warning");
+  logger.Error("Error");
+}
+```
+# IMod API
+The IMod API is a collection of useful things you can use to create your mod. The IMod API consists of:
+-IModPlugin
+-IModLogger (metioned previously)
+
+IModPlugin is the thing responsible for you being able to develop your mods easily, if not, you would need to manually code your way into the IMod Loader to have it successfully scan your mod.
+
+We have more parts of the IMod API we plan to develop soon. We plan to add:
+-IModSaver
+-IModMarketplace
+
+IModSaver will let you save anything you might need on your mods, and IModMarketplace will let you download verified mods right into your cfil folder. These mods will be personally verified by us. You will require:
+-Proof of creation
+-Recording of a showcase of the code, building the .dll, and sending it to us.
+
+These terms may sound strict, but this is to be safe from viruses. If we believe your mod is harmful, we may decode the dll to see if it is harmful. If it is harmful, you will be permanantely restricted from putting mods onto the IModMarketplace.
 
 # How do you load the file?
 To load the file, put your dll file into the `cfil` folder.
