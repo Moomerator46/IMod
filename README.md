@@ -1,5 +1,5 @@
 # IMod
-![Github Stars](https://img.shields.io/badge/build-1.4.0-blue)
+![Github Stars](https://img.shields.io/badge/build-1.5.0-blue)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Moomerator46/IMod?style=flat&color=yellow)
 
 IMod is a tool that is planned to have an ability that you can make mods for [my games](https://moomerator.itch.io/).
@@ -124,6 +124,37 @@ public class YourModName : IModPlugin
 }
 ```
 
+v1.5.0:
+```cs
+using System;
+
+public class YourModName : IModPlugin
+{
+  public string Name => "Mod Name";
+  public string Author => "Modder";
+  public string Description => "Mod Description";
+  public string Version => "v(Version Number)";
+  public string RequiredIModVersion => "v1.5.0";
+
+  private IModSaver saver;
+  
+  public void Run(IModLogger logger)
+  {
+    logger.Log("Log"); //Adds a log to untitled_log.txt
+    logger.Warn("Warning"); //Adds a warning to untitled_log.txt
+    logger.Error("Error"); //Adds an error to untitled_log.txt
+    // Just add your code without this if you don't want to use logger, just keep it in the Run parameter or else it will cause errors.
+
+    saver = new Saver();
+
+    saver.Save("This is text to save", this.Name, 1); //saver.Save(String to save, Save file unpolished name, Line to output in save file.);
+
+    string LoadedData = saver.Load(1, this.Name); //saver.Load(Line to read, Save file unpolished name to look for.);
+    Console.WriteLine($"Loaded data: {LoadedData}");
+  }
+}
+```
+
 ## Step 3: Compiling your mod.
 Be sure to go into both tabs, and to Ctrl+S to save them.
 
@@ -158,11 +189,13 @@ public void Run(IModLogger logger)
 The IMod API is a collection of useful things you can use to create your mod. The IMod API consists of:
 -IModPlugin
 -IModLogger (metioned previously)
+-IModSaver
 
 IModPlugin is the thing responsible for you being able to develop your mods easily, if not, you would need to manually code your way into the IMod Loader to have it successfully scan your mod.
 
+IModSaver is a part of the IMod API that let's you save any needed data required to run the mod. This can be useful for keeping a username and password locally if you made a mod that multiple people uses on the same device, and if you made a C# video game, it can be used to track where you go and what you have. You can see an example of using IModSaver in the previous InfoPlay IMod v1.5.0 Mod Example above.
+
 We have more parts of the IMod API we plan to develop soon. We plan to add:
--IModSaver
 -IModMarketplace
 
 IModSaver will let you save anything you might need on your mods, and IModMarketplace will let you download verified mods right into your cfil folder. These mods will be personally verified by us. You will require:
